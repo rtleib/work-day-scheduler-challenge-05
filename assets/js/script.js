@@ -17,4 +17,29 @@ $(document).ready(function () {
     $("#15").val(localStorage.getItem("15"));
     $("#16").val(localStorage.getItem("16"));
     $("#17").val(localStorage.getItem("17"));
+
+    determineStatus();
 });
+
+// Function to color-coded the textarea
+function determineStatus() {
+    $.each($(".description"), function(){
+        var current = moment().hour();
+        var textHour = parseInt($(this).attr("id"));
+        if (textHour === current){
+            $(this).addClass("present");
+            $(this).removeClass("past");
+            $(this).removeClass("future");
+        }
+        else if (textHour < current){
+            $(this).addClass("past");
+            $(this).removeClass("future");
+            $(this).removeClass("present");
+        }
+        else if (textHour > current){
+            $(this).addClass("future");
+            $(this).removeClass("present");
+            $(this).removeClass("past");
+        }
+    }, this);
+}
