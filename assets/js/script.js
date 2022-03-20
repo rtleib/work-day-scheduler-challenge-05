@@ -5,7 +5,7 @@ $(document).ready(function () {
     // To save description in textarea
     $(".saveBtn").on("click", function () {
         var desc = $(this).siblings(".description").val();
-        var textBox = $(this).parent().attr("id");
+        var textBox = $(this).siblings(".description").attr("id");
         localStorage.setItem(textBox, desc);
     });
     $("#9").val(localStorage.getItem("9"));
