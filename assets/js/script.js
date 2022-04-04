@@ -23,7 +23,7 @@ $(document).ready(function () {
 
 // Function to color-coded the textarea
 function determineStatus() {
-    $.each($(".description"), function(){
+    $(".description").each(function(){
         var current = moment().hour();
         var textHour = parseInt($(this).attr("id"));
         if (textHour === current){
